@@ -129,6 +129,43 @@ namespace CodeCampTest
 
         }
 
+        // find AUT home button                                        |  css  | aria-label="home"
+        // click on home button to go to page
+        // Go to States and Transitions block                           
+        // find the input element corresponding to Forename element    | ById   | id="forename"
+        // enter name
+        // find submit element                                         | ById   | id="submit"
+        // press submit
+        // put a wait
+        // check that [hello + "name"] message is displayed            | ByCss  | class="snackbar popup-message mr-auto"
+
+        [TestMethod]
+        public void SubmitStatesAndTransitionsForm()
+        {
+            // arrange
+
+            // initialize menu object
+            Menu menu = new Menu(driver);
+            // go to "HOME" page
+            menu.clickHomePage();
+
+
+            // act
+
+            // initialize statesAndTransitionsBlock object to get elements 
+            StatesAndTransitionsBlock statesAndTransitionsBlock = new StatesAndTransitionsBlock(driver);
+            // enter forename
+            statesAndTransitionsBlock.Forename = "Sikander";
+            // submit form
+            statesAndTransitionsBlock.SubmitForm();
+
+            // wait
+            new WebDriverWait(driver, TimeSpan.FromSeconds(10)).Until(d => statesAndTransitionsBlock.PopUpMessage == "Hello Sikander");
+
+            //assert
+            Assert.AreEqual("Hello Sikander", statesAndTransitionsBlock.PopUpMessage);
+        }
+
         [TestCleanup]
         public void CleanUp()
         {
