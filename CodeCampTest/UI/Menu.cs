@@ -22,5 +22,10 @@ namespace CodeCampTest
         {
             driver.FindElement(By.CssSelector("[aria-label=planets]")).Click();
         }
+
+        public void clickHomePage()
+        {
+            driver.FindElement(By.CssSelector("[aria-label=home]")).Click();
+        }
     }
 }
